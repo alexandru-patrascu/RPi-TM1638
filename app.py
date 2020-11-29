@@ -9,7 +9,7 @@ GPIO.setmode(GPIO.BCM)
 # Hide console warnings from GPIO
 GPIO.setwarnings(False)
 
-# The GPIO pin used for LED
+# The GPIO pin used for LED light
 GPIO.setup(26,GPIO.OUT)
 
 STB = 22 # The GPIO pin used for STB
@@ -33,7 +33,7 @@ def num_update():
 	return
 
 
-# Toggle the GPIO LED
+# Toggle the GPIO LED light
 def toggle_led(tmLed):
 	global led
 	print('Led Status: {led}, tmLed: {tmLed}'.format(led = led, tmLed = tmLed))
@@ -52,7 +52,7 @@ def toggle_led(tmLed):
 	return
 
 
-# Toggle ON / OFF the correspondent LED of the pressed TM Board switch
+# Toggle ON / OFF the correspondent LED light of the pressed TM Board switch
 def switch_press_led_feedback(tmSwitch):
 	TM.leds[tmSwitch] = True if TM.switches[tmSwitch] else False
 	sleep(0.2)
@@ -60,28 +60,42 @@ def switch_press_led_feedback(tmSwitch):
 
 
 while True:
+	# Toggle LED light
 	if TM.switches[0]:
 		toggle_led(0)
+
+	# Increase the counter
 	if TM.switches[1]:
 		switch_press_led_feedback(1)
 		num_left += 1
 		num_update()
+
+	# Decrease the counter
 	if TM.switches[2]:
 		switch_press_led_feedback(2)
 		num_left -= 1
 		num_update()
+
+	# Set the Left-Part of the LED Display to 0
 	if TM.switches[3]:
 		switch_press_led_feedback(3)
 		num_left = 0
 		num_update()
+
+	# Simple print
 	if TM.switches[4]:
 		switch_press_led_feedback(4)
 		print("4")
+
+	# Set the Left-Part of the LED Display to 0123
+	# Set the Right-Part of the LED Display to 4567
 	if TM.switches[5]:
 		switch_press_led_feedback(5)
 		num_left = 0123
 		num_right = 4567
 		num_update()
+
+	# Print the values of LED Display
 	if TM.switches[6]:
 		switch_press_led_feedback(6)
 		print('Number left: {num_left} \n Number right: {num_right}'.format(num_left = num_left, num_right = num_right))
