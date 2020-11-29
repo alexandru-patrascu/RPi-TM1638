@@ -1,2 +1,9 @@
 # RPi-TM1638
-TM1638 Led Controller Boilerplate using Raspberry Pi Model 3B+ and GPIO
+
+## Description
+TM1638 Controller Boilerplate.
+
+## Configuration
+- Raspberry Pi Model 3B+
+- TM1638 Controller
+- GPIO Board
