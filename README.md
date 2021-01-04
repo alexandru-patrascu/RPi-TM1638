@@ -22,15 +22,15 @@ TM1638 Controller Boilerplate.
 - Connect the T-Cobbler to Ribbon Cable and Breadboard
 - Connect the remaining end of Ribbon Cable to RPi
 - Connect TM1638 to T-Cobbler using the following pinout
-  - VCC - 3.3V
-  - GND - GND
-  - STB - #22
-  - CLK - #21
-  - DIO - #17
+  - **VCC - 3.3V**
+  - **GND - GND**
+  - **STB - #22**
+  - **CLK - #21**
+  - **DIO - #17**
 - Add Led
 - Attach the resistor to led
 - Connect the led's remaining end to T-Cobbler
-  - LED - #26
+  - **LED - #26**
 
 ![TM1638 Circuit](pictures/rpi-tm1638-1.jpg)
 ![TM1638 Circuit](pictures/rpi-tm1638-2.jpg)
