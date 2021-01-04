@@ -10,14 +10,18 @@ GPIO.setmode(GPIO.BCM)
 GPIO.setwarnings(False)
 
 # The GPIO pin used for LED light
-GPIO.setup(26,GPIO.OUT)
 
-STB = 22 # The GPIO pin used for STB
-CLK = 21 # The GPIO pin used for CLK
-DIO = 17 # The GPIO pin used for DIO
+STB = 26 # The GPIO pin used for STB
+CLK = 19 # The GPIO pin used for CLK
+DIO = 13 # The GPIO pin used for DIO
+LED = 21 # The GPIO pin used for LED light
 
+# Set up the TM Board
 TM = TMBoards(DIO, CLK, STB, 0)
 TM.clearDisplay()
+
+# Set up the LED
+GPIO.setup(LED, GPIO.OUT)
 
 num_left = 0
 num_right = 9999
@@ -38,13 +42,13 @@ def toggle_led(tmLed):
 	global led
 	print('Led Status: {led}, tmLed: {tmLed}'.format(led = led, tmLed = tmLed))
 	if led == False:
-		GPIO.output(26, GPIO.HIGH)
+		GPIO.output(LED, GPIO.HIGH)
 		TM.segments[tmLed] = '1'
 		TM.leds[tmLed] = True
 		led = True
 		sleep(0.4)
 	elif led == True:
-		GPIO.output(26, GPIO.LOW)
+		GPIO.output(LED, GPIO.LOW)
 		TM.segments[tmLed] = '0'
 		TM.leds[tmLed] = False
 		led = False
